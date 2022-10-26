@@ -1,0 +1,130 @@
+
+~~~~~~~~~~~~~~~~~~~
+DAY- II
+~~~~~~~~~~~~~~~~~~~
+Dev Environment :::  IDE --- Eclipse based IDEs - Visual Studio code.
+
+save...
+
+flat file --- *.java 
+
+java web appln.  ===> index.jsp....
+
+index.jsp 
+		with a func1.
+		tested.
+		saved.   ===> v1.0
+
+index.jsp 
+		with a func2.
+		tested.
+		saved.	===> v1.2
+
+index.jsp 
+		with a func3.
+		tested.
+		saved.  ===> v1.3
+		
+		
+Version control system   == Commit 
+
+	-- used to version control the files which I save.
+	-- Which can track my file changes.
+	
+jdk-v1.8
+jdk-v1.7
+
+
+index.jsp 
+
+	rec1
+	rec2 
+	
+	saved ===> v1.0
+	
+index.jsp 
+
+	rec1
+	rec2 
+	rec3
+	rec4 
+	saved ===> v1.1
+	
+	saved ===> v1.1
+	
+Remote Repo.::
+
+	Local Repo 
+	
+	Staging Area
+	
+	Working Dir.
+	
+
+
+git clone   ==>> 
+
+git add .
+
+git commit
+
+git fetch
+
+git pull
+
+git push 
+
+git fetch ::: --- update the local repo. 
+git merge 
+
+git pull ::: -- it will update the local repo as well as working dir.  ===> fetch & merge 
+
+
+
+
+
+
+
+
+github.com as a remote repository!!!!
+
+Create an account in www.github.com
+email -- 
+
+Create a remote repository in github.
+
+
+gitlab
+az repo
+aws code commit
+bitbucket
+
+
+
+Next Will see how to create aws account!!!
+
+Create VMs'
+
+
+
+Next :::
+
+How to Install GIT ????
+
+Windows ::
+			GIT BASH   == Command User Interface
+		****GIT GUI    == GUI 
+	
+Linux VMs -- AWS Linux 2.
+
+
+Summary:::
+
+Basic of VCS / GIT
+Create github account
+create github repo
+fork github repo
+install git on both windows and Linux
+Login to AWS Console
+Create Amazon Linux 2 Machine 
+Connect using EC2 Instance Connect!!!!
