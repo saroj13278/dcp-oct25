@@ -1,7 +1,148 @@
+@@@@@@@@@@@@@
+DAY- 1
+@@@@@@@@@@@@@
 
-~~~~~~~~~~~~~~~~~~~
-DAY- II
-~~~~~~~~~~~~~~~~~~~
+DevOps ????
+
+
+Software
+
+SDLC ????
+
+Waterfall Model :::   === Linear in fashion!!!!
+
+	Requirement Analysis
+	Design
+	Code
+	Test
+	Implementation / Deployment
+	Enha...
+	
+Agile Methodologies!!!!   ---=== 
+
+Iteration1
+	Requirement Analysis
+	Design
+	Code
+	Test
+	Implementation / Deployment
+	Enha..
+	
+Iteration2
+	Requirement Analysis
+	Design
+	Code
+	Test
+	Implementation / Deployment
+	Enha..
+	
+Iteration3
+	Requirement Analysis
+	Design
+	Code
+	Test
+	Implementation / Deployment
+	Enha..
+	
+	
+	
+
+DevOps !!!!
+
+Online - -E-Commerce 
+
+Amazon.com 
+
+Functions / Services :::
+
+sign-up
+Login
+search for the products
+check the reviews
+add the product to cart
+make payments			===> do some minor changes & rel.
+place the order 
+track the order
+
+
+Micro-service based appln.
+
+Monolith Appln.
+
+Environments :::
+
+Development Environments
+Build Environments
+Test Environments
+Production Environments
+
+Non-Production Environment								Production Environment
+
+DEV,QA,UAT,Pre-Prod/Staging 			<==>			PROD - Environment
+
+
+Using DevOps We are actually gng to automate these process.
+
+DEV Environment Create the the source code, Java Application ===>
+Build ===>> is a process of compiling the source code and creating the artifacts(binaries)*.war
+Java Application ===>
+
+The same artifacts will be promoted to higher envi. (QA/UAT/Pre-Prod/Staging) PROD.
+
+Continous Deployment ::: 
+Continous Integration ::: ===>> Build ===>> is a process of compiling the source code and creating the artifacts(binaries)*.war
+
+Continous Delivery :::  Automatically deploy the artifacts in all the (DEV,QA,UAT,Pre-Prod/Staging) 
+						but, to deploy to a prod envi you need Manual approval process.
+
+Continuous Deployment ::: Automatically deploy the artifacts in all the (DEV,QA,UAT,Pre-Prod/Staging)  and also in Production.
+
+
+DevOps Strategies you define!!!!  Continous Improvement.......
+
+
+ALM -- Application Lifecycle Management Tool  - jira, 
+
+IDE -- Integrated Development Environment - Eclipse based IDE, Visual Studio Code... 
+
+
+build 
+
+release 
+
+Jenkins Pipeline::: === Build orchestrator!!!
+
+git, build(maven) and create articate,  test junit, docker/k8s/ansible monitor
+
+SDLC == DevOps 
+
+Code Deployment/Delivery/Promotion/Release ::::
+
+Summary ::
+
+What is DevOps ?
+What are the various Stages in DevOps?
+How DevOps is far better that Agile/Waterfall ?
+List of DevOps Tools and its purpose on High-level.
+
+
+jdk === jdk1.7
+jdk1.8
+
+
+AWS Console!!!!
+
+for all our Lab practise!!
+
+VM's 
+
+First, create AWS Account -- Free Tier Account == valid for 1 year.
+Create Virtual Machines!!! 
+
+@@@@@@@@@@@@@
+DAY- 2
+@@@@@@@@@@@@@
+
 Dev Environment :::  IDE --- Eclipse based IDEs - Visual Studio code.
 
 save...
