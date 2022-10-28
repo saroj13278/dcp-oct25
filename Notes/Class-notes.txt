@@ -269,3 +269,142 @@ install git on both windows and Linux
 Login to AWS Console
 Create Amazon Linux 2 Machine 
 Connect using EC2 Instance Connect!!!!
+
+
+
+@@@@@@@@@@@
+
+DAY-3
+
+@@@@@@@@@@@
+
+GIT Commands 
+
+	Local Repo..
+	Branches
+	Remote Repos...
+
+
+GIT Lab :::
+
+
+GIT Bash == demo all git commands.
+
+
+AWS Linux 
+
+
+Tracking the changes::::
+
+v1.0
+
+who has made the changes and when the changes happened???
+
+
+user identity is mandatory!!!
+
+Create the valid user and email id. 
+commit..
+
+git config --list
+
+git config --global 
+
+git init -- is used to initialize a local repo -- with default master branch
+
+git add , commit
+
+Developer ... 
+
+DEvOps === find a scope for automation!!!! 
+		creating the scripts == shell script/python/groovy/yaml
+		
+		
+Consider!!!
+
+Devops Engg. work on an automation == python script... 
+
+
+
+Repo1 (branch1)
+	aws_infra_provision.py	
+	git add .
+	
+Repo1 (branch2)
+	aws_infra_provision1.py
+	
+
+git stash  - #temp_area!
+
+Branch ==> is used to work of the changes independently without impacting other branches.
+
+git status & log 
+
+
+files are there in staging area!!!
+
+
+remove the file from staging Area...
+
+git rm --cached file1.txt  === removed from staging area, but it exist in working dir.
+
+git rm -f file1.txt  === removed from staging area as well as from working dir.
+	
+	
+git ignore!!!
+
+Consider ::: 
+
+java developer 
+repo1
+	*.java   == Source code to be tracked.. 
+	*.jsp    == Source code to be tracked.. 
+	*.class 
+	*.war
+	*.jar
+	folder/
+	config
+	secret
+	envi.variable_files
+
+folder/
+	99 files 	
+1.doc 
+
+1 
+
+
+git commit == > local repo 
+git push == > push to remote repo.. 
+
+
+Summary:::
+
+create local git repo ::
+git init
+.gitignore 
+git config 
+git add 
+git commit 
+git log 
+git stash 
+status,
+
+
+file1.txt  in WDir
+file2.txt
+file3.doc 
+
+
+git push 
+
+
+add to index area 
+commit to git repo.
+
+
+GIT === is not just about commands
+
+
+strategy we create and follow....
+
