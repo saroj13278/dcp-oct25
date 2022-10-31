@@ -408,3 +408,176 @@ GIT === is not just about commands
 
 strategy we create and follow....
 
+@@@@@@@@
+DAY-4
+@@@@@@@@
+
+Local Gite Repo.;::git add commit...
+
+git diff ===>
+
+DevOps era!!!
+
+git diff 
+
+git revert =====>>>>
+
+I did some prod .deployment (deployment window) 
+
+revert 
+reset !!!
+
+git reset!!!
+
+git add vs commit
+
+git reset --soft   ===> jus changes my HEAD ptr to prev. commit it won't remove the file from index 
+git reset --mixed  ===> changes my HEAD ptr to prev. commit and also remove the file from staging area
+git reset --hard   ===> changes my HEAD ptr to prev. commit and also remove the file from staging area as well as from W.Dir
+
+
+git repo... 
+
+  603  git log --oneline
+  604  ls
+  605  git ls-files
+  606  git reset --hard 756cbbd
+  607  git log --oneline
+  608  git status
+  609  ls
+  610  git ls-files
+
+cm3  === 15
+cm2  === 10
+
+
+cm1  === 05
+
+
+git reset vs revert!!!!
+
+Consider !!! 
+
+committed some changes ///
+
+cm1,2,3,4, 
+
+git commit -m "CADSF"
+
+git commit --amend -m "ADF"
+
+
+developer === >> 10 files 
+
+
+9 files 
+
+git add .  # added only 9 files
+git commit -m "CR1001"
+
+
+git rm 
+
+
+
+commit msg == release ID / CR # 
+
+
+
+
+1,2,3,4,5,6   working files 
+
+
+
+commit all the 6 files together.
+
+
+committed 5 files intead of 6. 
+
+git add file6
+git commit --amend --no-edit 
+
+
+
+
+
+
+
+
+
+
+
+Branches!!! 
+Repo1 
+master / main == is default branch! -== Prod copy of my src.
+
+create a new branch and work on it.
+
+
+Branching techniques...
+
+
+Branching Strategies :::
+
+master -- prod copy (file1.txt,file2.txt,file3.txt)
+
+	Developer 1 : feature_branch1 (file1.txt,file2.txt,file3.txt)
+	Developer 1 : feature_branch2 (file1.txt,file2.txt,file3.txt)
+	Developer 1 : feature_branch3 (file1.txt,file2.txt,file3.txt)
+	Developer 1 : feature_branch4 (file1.txt,file2.txt,file3.txt)
+	Developer 1 : feature_branch5 (file1.txt,file2.txt,file3.txt)
+
+
+********************************************************************
+
+master ===
+
+	Development_Branch
+		Developer 1 : feature_branch1 (file1.txt,file2.txt,file3.txt)
+		Developer 2 : feature_branch2 (file1.txt,file2.txt,file3.txt)
+		Developer 3 : feature_branch3 (file1.txt,file2.txt,file3.txt)
+		Developer 4 : feature_branch4 (file1.txt,file2.txt,file3.txt)
+
+
+************************************************************************
+
+master === 
+
+hot-fix / adhoc Branch 
+
+	Release Branch :
+
+		Integration Branch:
+		
+			Development_Branch			# Appln. Team1
+				Developer 1 : feature_branch1 (file1.txt,file2.txt,file3.txt)
+				Developer 2 : feature_branch2 (file1.txt,file2.txt,file3.txt)
+				Developer 3 : feature_branch3 (file1.txt,file2.txt,file3.txt)
+				Developer 4 : feature_branch4 (file1.txt,file2.txt,file3.txt)
+
+			Development_Branch			# Appln. Team2
+				Developer 1 : feature_branch1 (file1.txt,file2.txt,file3.txt)
+				Developer 2 : feature_branch2 (file1.txt,file2.txt,file3.txt)
+				Developer 3 : feature_branch3 (file1.txt,file2.txt,file3.txt)
+				Developer 4 : feature_branch4 (file1.txt,file2.txt,file3.txt)
+
+
+
+
+
+
+QA / UAT == PROD  
+
+tag is used to identify the rel.
+
+jdk1.7
+
+jdk1.8 
+
+git 2.68.1
+
+
+Merge Conflicts!!!!
+
+Occurs when more than one users try to update the same file / rec...
+
