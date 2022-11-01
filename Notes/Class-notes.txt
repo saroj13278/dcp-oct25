@@ -191,7 +191,7 @@ index.jsp
 	rec4 
 	saved ===> v1.1
 	
-	saved ===> v1.1
+
 	
 Remote Repo.::
 
@@ -262,6 +262,7 @@ Linux VMs -- AWS Linux 2.
 Summary:::
 
 Basic of VCS / GIT
+GIT flow
 Create github account
 create github repo
 fork github repo
@@ -402,11 +403,10 @@ git push
 add to index area 
 commit to git repo.
 
-
 GIT === is not just about commands
 
-
 strategy we create and follow....
+
 
 @@@@@@@@
 DAY-4
@@ -522,10 +522,10 @@ Branching Strategies :::
 master -- prod copy (file1.txt,file2.txt,file3.txt)
 
 	Developer 1 : feature_branch1 (file1.txt,file2.txt,file3.txt)
-	Developer 1 : feature_branch2 (file1.txt,file2.txt,file3.txt)
-	Developer 1 : feature_branch3 (file1.txt,file2.txt,file3.txt)
-	Developer 1 : feature_branch4 (file1.txt,file2.txt,file3.txt)
-	Developer 1 : feature_branch5 (file1.txt,file2.txt,file3.txt)
+	Developer 2 : feature_branch2 (file1.txt,file2.txt,file3.txt)
+	Developer 3 : feature_branch3 (file1.txt,file2.txt,file3.txt)
+	Developer 4 : feature_branch4 (file1.txt,file2.txt,file3.txt)
+	Developer 5 : feature_branch5 (file1.txt,file2.txt,file3.txt)
 
 
 ********************************************************************
@@ -542,8 +542,6 @@ master ===
 ************************************************************************
 
 master === 
-
-hot-fix / adhoc Branch 
 
 	Release Branch :
 
@@ -581,3 +579,842 @@ Merge Conflicts!!!!
 
 Occurs when more than one users try to update the same file / rec...
 
+
+
+
+GIT Module:::
+
+
+GIT Branches :::
+
+@@@@@@@
+Day-5
+@@@@@@@
+
+Branching 
+
+Merging Concepts:::
+
+
+master 
+		fbranch1
+		fbranch2
+		fbranch3
+	
+Merge conflict Occurs!!!
+
+DevOps Era .. we should first prevent Merge Conflict.
+
+How to prevent!!!
+
+1.  Do proper code review!!! 
+
+
+
+How to fix Merge Conflict::
+
+1. Identify the file which create conflicts!!
+
+2. review the file content
+
+3. update the necessary changes
+
+4. add & Commit the actual change.
+
+
+
+master
+		f1
+		f2
+		
+		
+				
+master  		 == cm1,cm2	, f1cm1,f1cm2 									f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+
+		feature1 ==== cm1,cm2, f1cm1,f1cm2
+
+		feature2 ==== cm1,cm2, f2cm1,f2cm2
+		
+						cm1,cm2	, f1cm1,f1cm2    cm1,cm2,f2cm1,f2cm2
+
+@Local Repo:
+git rebase 
+git merge 
+
+
+
+@Remote Repo:
+local -- remote repo! 
+
+git pull 
+git push 
+
+
+
+squash::::
+
+
+master  : cm1,cm2, - f1cm1, cm2, cm3, cm4,cm5,cm6,cm7,c8,cm9
+
+dev1 == 	f3 : cm1,cm2, - f1cm1, cm2, cm3, cm4,cm5 == one new commit by combining all the commits
+
+git merge f1 
+
+squash ::
+while merging  
+				git merge --squash f1 
+				git commit -m "cmsg"
+								
+before merging
+				git rebase -i HEAD~8
+				commit-msg
+				
+Delete Branch ::: git branch -D feature4
+
+Rename Branch ::: git branch -m feature4 f4 
+
+
+
+***********************
+
+ Remote Repo:::
+ 
+
+ 
+git ::
+
+clone
+pull
+fetch 
+push 
+remote 
+
+				
+
+
+Pull-Request!!!  ---> developer creates pull request!
+
+
+
+Summary:::
+
+branch 
+merge
+rebase
+squash
+remote
+git clone
+pull
+push
+Pull Request 
+
+
+
+
+
+  502  cd oct25-dcpbatch/
+  503  ls
+  504  mkdir repo5
+  505  cd repo5
+  506  git init
+  507  clear
+  508  s
+  509  ls
+  510  clear
+  511  echo "rec1" >> s1.txt
+  512  git add .
+  513  git commit -m "CM1"
+  514  echo "rec1" >> s2.txt
+  515  git add .
+  516  git commit -m "CM2"
+  517  echo "rec1" >> s3.txt
+  518  git add .
+  519  git commit -m "CM3"
+  520  git log --oneline
+  521  clear
+  522  git log --oneline
+  523  git switch -c feature1
+  524  ls
+  525  vi s1.txt
+  526  git add .
+  527  git commit -m "CM1 from feature1"
+  528  cat s1.txt
+  529  git switch master
+  530  cat s1.txt
+  531  git switch -c feature2
+  532  ls
+  533  cat s1.txt
+  534  git log --oneline
+  535  vi s1.txt
+  536  git add .
+  537  git commit -m "CM1 from feature2"
+  538  cat s1.txt
+  539  git switch master
+  540  cat s1.txt
+  541  git merge feature1
+  542  git log --oneline
+  543  cat s1.txt
+  544  git merge feature2
+  545  cat s1.txt
+  546  vi s1.txt
+  547  cat s1.txt
+  548  git add .
+  549  git commit -m "Fixed Merge Conflict. Retained Feature2 src"
+  550  git log --oneline
+  551  git switch feature2
+  552  git log --oneline
+  553  cd ..
+  554  mkdir repo6
+  555  cd repo6/
+  556  git init
+  557  clear
+  558  echo "rec1" a1.txt
+  559  git add .
+  560  git commit -m "CM1 from master"
+  561  ls
+  562  echo "rec1" >> a1.txt
+  563  git add .
+  564  git commit -m "CM1 from master"
+  565  echo "rec1" >> a2.txt
+  566  git add .
+  567  git commit -m "CM2 from master"
+  568  clear
+  569  git log -oneline
+  570  git log --oneline
+  571  git switch -c f1
+  572  ls
+  573  git log --oneline
+  574  echo "rec1" >> a3.txt
+  575  git add .
+  576  git commit -m "CM1 from f1"
+  577  echo "rec1" >> a4.txt
+  578  git add .
+  579  git commit -m "CM2 from f1"
+  580  git log --oneline
+  581  git switch -c f2
+  582  git branch
+  583  git branch -d f2
+  584  git switch master
+  585  git branch -d f2
+  586  git branch -D f2
+  587  git branch
+  588  git switch -c f2
+  589  git log --oneline
+  590  ls
+  591  echo "rec1" >> l1.txt
+  592  git add .
+  593  git commit -m "CM1 from f2"
+  594  echo "rec1" >> l2.txt
+  595  git add .
+  596  git commit -m "CM2 from f2"
+  597  git log --oneline
+  598  git switch master
+  599  git merge f1
+  600  git log --oneline
+  601  git switch f2
+  602  ls
+  603  git log --oneline
+  604  git rebase master
+  605  git log --oneline
+  606  git switch master
+  607  git merge f2
+  608  git log --oneline
+  609  clear
+  610  git log --oneline
+  611  git switch -c f3
+  612  echo "rec1" >> q1.txt
+  613  git add .
+  614  git commit -m "CR1001-Oct"
+  615  echo "rec1" >> q2.txt
+  616  git add .
+  617  git commit -m "CR1001-Oct"
+  618  echo "rec1" >> q3.txt
+  619  git add .
+  620  git commit -m "CR1001-Oct"
+  621  echo "rec1" >> q4.txt
+  622  git add .
+  623  git commit -m "CR1001-Oct"
+  624  echo "rec1" >> q5.txt
+  625  git add .
+  626  git commit -m "CR1001-Oct"
+  627  git log --oneline
+  628  git switch master
+  629  git merge --squash f3
+  630  git log --oneline
+  631  git status
+  632  git commit -m "CR1001-Oct"
+  633  git log --oneline
+  634  ls
+  635  git switch -c f4
+  636  clear
+  637  git log --oneline
+  638  echo "rec1" >> w1.txt
+  639  git add .
+  640  git commit -m "CR2001-Oct"
+  641  echo "rec2" >> w1.txt
+  642  git add .
+  643  git commit -m "CR2001-Oct"
+  644  echo "rec3" >> w1.txt
+  645  git add .
+  646  git commit -m "CR2001-Oct"
+  647  echo "rec4" >> w1.txt
+  648  git add .
+  649  git commit -m "CR2001-Oct"
+  650  echo "rec5" >> w1.txt
+  651  git add .
+  652  git commit -m "CR2001-Oct"
+  653  echo "rec6" >> w1.txt
+  654  git add .
+  655  git commit -m "CR2001-Oct"
+  656  git log --oneline
+  657  cat w1.txt
+  658  git rebase -i HEAD~6
+  659  git log --oneline
+  660  git branch
+  661  clear
+  662  cd ..
+  663  ls
+  664  mkdir repo7
+  665  cd repo7
+  666  git clone
+  667  ls
+  668  clear
+  669  git clone https://github.com/LoksaiETA/TestRepo1.git
+  670  ls
+  671  cd TestRepo1/
+  672  ls
+  673  git remote -v
+  674  echo "rec1" >> z1.txt
+  675  git add .
+  676  git commit -m "Commit from Local Repo"
+  677  ls
+  678  git push -u origin master
+  679  echo "rec1" >> z2.txt
+  680  git add .
+  681  git commit -m "z2.txt added from local repo"
+  682  git push -u origin dev-branch1
+  683  git push -u origin master
+  684  git switch -c dev-branch
+  685  echo "adfasdF" >> z3.txt
+  686  git add .
+  687  git commit -m "added z3.txt"
+  688  git remote -v
+  689  git push -u origin dev-branch
+  690  git switch master
+  691  git pull
+  692  ls
+  693  git fetch
+  694  ls
+  695  history
+
+
+
+
+
+
+
+
+
+
+
+		
+199  echo "rec1" >> s3.txt
+  200  git add .
+  201  git commit -m "CM4"
+  202  ls
+  203  git log --oneline
+  204  git switch feature1
+  205  git log --oneline
+  206  git rebase master
+  207  git log --oneline
+  208  git switch master
+  209  git merge feature1
+  210  git log --oneline
+  211  git switch feature1
+  212  git log --oneline
+  213  clear
+  214  git log --oneline
+  215  git switch master
+  216  git switch -c feature2
+  217  git log --oneline
+  218  echo "rec1" >> a1.txt
+  219  git add .
+  220  git commit -m "CM1 from feature2"
+  221  cat a1.txt
+  222  echo "rec2" >> a1.txt
+  223  git add .
+  224  git commit -m "CM2 from feature2"
+  225  echo "rec3" >> a1.txt
+  226  git add .
+  227  git commit -m "CM3 from feature2"
+  228  echo "rec4" >> a1.txt
+  229  git add .
+  230  git commit -m "CM4 from feature2"
+  231  git log --oneline
+  232  cat a1.txt
+  233  git rebase -i HEAD~4
+  234  git log --oneline
+  235  git switch master
+  236  git log --oneline
+  237  git merge feature2
+  238  git log --oneline
+  239  git log --oneline
+  240  ls
+  241  cat a1.txt
+  242  git branch
+  243  git log --oneline
+  244  git switch -c feature3
+  245  ls
+  246  echo "rec1" >> q1.txt
+  247  git add .
+  248  git commit -m "CM1 from feature3"
+  249  echo "rec1" >> q2.txt
+  250  git add .
+  251  git commit -m "CM2 from feature3"
+  252  echo "rec1" >> q3.txt
+  253  git add .
+  254  git commit -m "CM3 from feature3"
+  255  git log --oneline
+  256  ls
+  257  git switch master
+  258  git cherry-pick 34951a5
+  259  ls
+  260  clear
+  261  cd ..
+  262  ls
+  263  git clone https://github.com/LoksaiETA/TestRepo1.git
+  264  ls
+  265  cd TestRepo1/
+  266  ls
+  267  git remote -v
+  268  echo "rec1" >> zzz.txt
+  269  git add .
+  270  git commit -m "zzz.txt added from local repo"
+  271  git status
+  272  git push -u origin master
+  273  cd ..
+  274  mkdir oct15-dummyrepo
+  275  git init
+  276  cd ..
+  277  mkdir oct22-demo1
+  278  cd oct22-demo1/
+  279  mkdir oct15-dummyrepo
+  280  cd oct15-dummyrepo/
+  281  pwd
+  282  git init
+  283  echo "# oct15-dummyrepo" >> README.md
+  284  git status
+  285  git add README.md
+  286  git commit -m "first commit from local"
+  287  git branch -M main
+  288  git remote -v
+  289  git remote add origin https://github.com/LoksaiETA/oct15-dummyrepo.git
+  290  git remote -v
+  291  git push -u origin main
+  292  git status
+  293  cat README.md
+  294  git pull
+  295  cat  README.md
+  296  git pull
+  297  cat README.md
+  298  git fetch
+  299  cat README.md
+  300  git checkout -b feature1
+  301  ls
+  302  cat README.md
+  303  git status
+  304  echo "rec1" >> testfile1.txt
+  305  git add .
+  306  git commit -m "cm1 from local feature1"
+  307  git status
+  308  git remote -v
+  309  git push -u origin feature1
+  310  exit
+  311  git --version
+  312  git
+  313  cd d:
+  314  mkdir loksaiorg
+  315  cd loksaiorg/
+  316  git clone https://github.com/Loksaiorg/java_mvn_webapp.git
+  317  cd java_mvn_webapp/
+  318  ls
+  319  cd d:
+  320  cd oct25-dcpbatch/
+  321  ls
+  322  cd ..
+  323  cd oct25-dcpbatch/
+  324  clear
+  325  ls
+  326  mkdir repo3
+  327  cd repo3/
+  328  git init
+  329  ls
+  330  echo "rec1" >> f1.txt
+  331  git add .
+  332  git commit -m "CM1"
+  333  echo "rec2" >> f1.txt
+  334  git add .
+  335  git commit -m "CM2"
+  336  clear
+  337  git log --oneline
+  338  git diff 7fdcce6 10f0f94
+  339  git diff 10f0f94 7fdcce6
+  340  echo "rec3" >> f1.txt
+  341  git status
+  342  git diff
+  343  git add .
+  344  git diff --cached
+  345  git commit -m "CM3"
+  346  git diff HEAD
+  347  git diff HEAD
+  348  clear
+  349  echo "rec4" >> f1.txt
+  350  git add .
+  351  git diff --cached
+  352  git diff --name-only --cached
+  353  git log --oneline
+  354  clear
+  355  git log --oneline
+  356  git show d4b07f0
+  357  clear
+  358  git log --oneline
+  359  git show 7fdcce6
+  360  git show d4b07f0
+  361  git revert 7fdcce6
+  362  git status
+  363  git commit -m "CM4"
+  364  git log --oneline
+  365  git show 9b33052
+  366  git revert d4b07f0
+  367  git revert --abort
+  368  clear
+  369  ls
+  370  cat f1.txt
+  371  echo "rec1" >> file2.txt
+  372  git add .
+  373  git commit -m "CM5"
+  374  echo "rec1" >> file3.txt
+  375  git add .
+  376  git commit -m "CM6"
+  377  git log --oneline
+  378  git revert c98b7b8
+  379  git log --oneline
+  380  clear
+  381  cd ..
+  382  mkdir repo4
+  383  cd repo4
+  384  clear
+  385  git init
+  386  echo "rec1" >> s1.txt
+  387  git add .
+  388  git commit -m "CM1"
+  389  echo "rec1" >> s2.txt
+  390  git add .
+  391  git commit -m "CM2"
+  392  clear
+  393  echo "rec1" >> s3.txt
+  394  git add .
+  395  git commit -m "CM3"
+  396  git log --oneline
+  397  git status
+  398  ls
+  399  git ls-files
+  400  clear
+  401  git log --oneline
+  402  git reset --soft 756cbbd
+  403  git status
+  404  git log --oneline
+  405  git commit -m "CM4"
+  406  git status
+  407  git ls-files
+  408  clear
+  409  git log --oneline
+  410  git reset --mixed 756cbbd
+  411  git status
+  412  git log --oneline
+  413  git ls-files
+  414  ls
+  415  clear
+  416  git log --oneline
+  417  git status
+  418  git add .
+  419  git commit -m "CM5"
+  420  clear
+  421  git log --oneline
+  422  ls
+  423  git ls-files
+  424  git reset --hard 756cbbd
+  425  git log --oneline
+  426  git status
+  427  ls
+  428  git ls-files
+  429  history
+  430  clear
+  431  clear
+  432  git log --oneline
+  433  ls
+  434  clear
+  435  echo "rec1" > a1.txt
+  436  git add .
+  437  git commit -m "adsfasd"
+  438  git log --oneline
+  439  git commit -m "New msg1"
+  440  git log --oneline
+  441  clear
+  442  git log --oneline
+  443  git commit --amend -m "Actual commit msg1"
+  444  git log --oneline
+  445  git status
+  446  ls
+  447  echo "rec1" >> c1.txt
+  448  git add .
+  449  git commit -m "added c1.txt"
+  450  git status
+  451  ls
+  452  git log --oneline
+  453  echo "rec1" >> c2.txt
+  454  gti add .
+  455  git add .
+  456  git status
+  457  git commit --amend --no-edit
+  458  git status
+  459  git log --oneline
+  460  git show 421c6d5
+  461  clear
+  462  git log --oneline
+  463  clear
+  464  git branch
+  465  git checkout -b feature1
+  466  git switch master
+  467  clear
+  468  git branch
+  469  git branch feature2
+  470  git branch
+  471  git switch -c feature3
+  472  git branch
+  473  clear
+  474  git branch feature1
+  475  git switch feature1
+  476  git log --oneline
+  477  git switch master
+  478  git log --oneline
+  479  clear
+  480  git branch
+  481  git switch feature1
+  482  ls
+  483  git ls-files
+  484  echo "rec1" >> z1.txt
+  485  git add .
+  486  git commit -m "cm1 from feature1"
+  487  git log --oneline
+  488  ls
+  489  git switch master
+  490  ls
+  491  git merge feature1
+  492  ls
+  493  git log --oneline
+  494  git switch feature3
+  495  ls
+  496  git switch master
+  497  ls
+  498  git switch -c feature4
+  499  ls
+  500  git log --oneline
+  501  cd d:
+  502  cd oct25-dcpbatch/
+  503  ls
+  504  mkdir repo5
+  505  cd repo5
+  506  git init
+  507  clear
+  508  s
+  509  ls
+  510  clear
+  511  echo "rec1" >> s1.txt
+  512  git add .
+  513  git commit -m "CM1"
+  514  echo "rec1" >> s2.txt
+  515  git add .
+  516  git commit -m "CM2"
+  517  echo "rec1" >> s3.txt
+  518  git add .
+  519  git commit -m "CM3"
+  520  git log --oneline
+  521  clear
+  522  git log --oneline
+  523  git switch -c feature1
+  524  ls
+  525  vi s1.txt
+  526  git add .
+  527  git commit -m "CM1 from feature1"
+  528  cat s1.txt
+  529  git switch master
+  530  cat s1.txt
+  531  git switch -c feature2
+  532  ls
+  533  cat s1.txt
+  534  git log --oneline
+  535  vi s1.txt
+  536  git add .
+  537  git commit -m "CM1 from feature2"
+  538  cat s1.txt
+  539  git switch master
+  540  cat s1.txt
+  541  git merge feature1
+  542  git log --oneline
+  543  cat s1.txt
+  544  git merge feature2
+  545  cat s1.txt
+  546  vi s1.txt
+  547  cat s1.txt
+  548  git add .
+  549  git commit -m "Fixed Merge Conflict. Retained Feature2 src"
+  550  git log --oneline
+  551  git switch feature2
+  552  git log --oneline
+  553  cd ..
+  554  mkdir repo6
+  555  cd repo6/
+  556  git init
+  557  clear
+  558  echo "rec1" a1.txt
+  559  git add .
+  560  git commit -m "CM1 from master"
+  561  ls
+  562  echo "rec1" >> a1.txt
+  563  git add .
+  564  git commit -m "CM1 from master"
+  565  echo "rec1" >> a2.txt
+  566  git add .
+  567  git commit -m "CM2 from master"
+  568  clear
+  569  git log -oneline
+  570  git log --oneline
+  571  git switch -c f1
+  572  ls
+  573  git log --oneline
+  574  echo "rec1" >> a3.txt
+  575  git add .
+  576  git commit -m "CM1 from f1"
+  577  echo "rec1" >> a4.txt
+  578  git add .
+  579  git commit -m "CM2 from f1"
+  580  git log --oneline
+  581  git switch -c f2
+  582  git branch
+  583  git branch -d f2
+  584  git switch master
+  585  git branch -d f2
+  586  git branch -D f2
+  587  git branch
+  588  git switch -c f2
+  589  git log --oneline
+  590  ls
+  591  echo "rec1" >> l1.txt
+  592  git add .
+  593  git commit -m "CM1 from f2"
+  594  echo "rec1" >> l2.txt
+  595  git add .
+  596  git commit -m "CM2 from f2"
+  597  git log --oneline
+  598  git switch master
+  599  git merge f1
+  600  git log --oneline
+  601  git switch f2
+  602  ls
+  603  git log --oneline
+  604  git rebase master
+  605  git log --oneline
+  606  git switch master
+  607  git merge f2
+  608  git log --oneline
+  609  clear
+  610  git log --oneline
+  611  git switch -c f3
+  612  echo "rec1" >> q1.txt
+  613  git add .
+  614  git commit -m "CR1001-Oct"
+  615  echo "rec1" >> q2.txt
+  616  git add .
+  617  git commit -m "CR1001-Oct"
+  618  echo "rec1" >> q3.txt
+  619  git add .
+  620  git commit -m "CR1001-Oct"
+  621  echo "rec1" >> q4.txt
+  622  git add .
+  623  git commit -m "CR1001-Oct"
+  624  echo "rec1" >> q5.txt
+  625  git add .
+  626  git commit -m "CR1001-Oct"
+  627  git log --oneline
+  628  git switch master
+  629  git merge --squash f3
+  630  git log --oneline
+  631  git status
+  632  git commit -m "CR1001-Oct"
+  633  git log --oneline
+  634  ls
+  635  git switch -c f4
+  636  clear
+  637  git log --oneline
+  638  echo "rec1" >> w1.txt
+  639  git add .
+  640  git commit -m "CR2001-Oct"
+  641  echo "rec2" >> w1.txt
+  642  git add .
+  643  git commit -m "CR2001-Oct"
+  644  echo "rec3" >> w1.txt
+  645  git add .
+  646  git commit -m "CR2001-Oct"
+  647  echo "rec4" >> w1.txt
+  648  git add .
+  649  git commit -m "CR2001-Oct"
+  650  echo "rec5" >> w1.txt
+  651  git add .
+  652  git commit -m "CR2001-Oct"
+  653  echo "rec6" >> w1.txt
+  654  git add .
+  655  git commit -m "CR2001-Oct"
+  656  git log --oneline
+  657  cat w1.txt
+  658  git rebase -i HEAD~6
+  659  git log --oneline
+  660  git branch
+  661  clear
+  662  cd ..
+  663  ls
+  664  mkdir repo7
+  665  cd repo7
+  666  git clone
+  667  ls
+  668  clear
+  669  git clone https://github.com/LoksaiETA/TestRepo1.git
+  670  ls
+  671  cd TestRepo1/
+  672  ls
+  673  git remote -v
+  674  echo "rec1" >> z1.txt
+  675  git add .
+  676  git commit -m "Commit from Local Repo"
+  677  ls
+  678  git push -u origin master
+  679  echo "rec1" >> z2.txt
+  680  git add .
+  681  git commit -m "z2.txt added from local repo"
+  682  git push -u origin dev-branch1
+  683  git push -u origin master
+  684  git switch -c dev-branch
+  685  echo "adfasdF" >> z3.txt
+  686  git add .
+  687  git commit -m "added z3.txt"
+  688  git remote -v
+  689  git push -u origin dev-branch
+  690  git switch master
+  691  git pull
+  692  ls
+  693  git fetch
+  694  ls
+  695  history
+  696  git log --stat
+  697  git show 03f62e30
+  698  history
