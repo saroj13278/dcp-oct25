@@ -1531,3 +1531,139 @@ Putty
 Jenkins by default runs on port 8080
 
 Install Jenkins!!!
+
+@@@@@@@@@@
+DAY-7
+@@@@@@@@@@
+
+
+Parameters::
+
+Environmental Variables
+
+User-defined Variables
+
+
+Build Job ::
+
+	checkout the src(java)  from git repo, perform build, create artifacts(Binaries)(*.war)
+
+Deployment Job ::
+
+	Copy the artifacts create during build stage into Target Environments(QA,UAT,PROD) 
+
+Create a jenkins job to deploy an application:::
+
+deploy_job1 ( with parameters)
+
+
+
+Jenkins will checkout the src from git repo, perform build, create artifacts(*.war), Deploy to Target Environments(QA,UAT,PROD) 
+
+
+Jenkins Pipeline are create using Groovy Scripts.
+Groovy Scripts :::
+
+
+Jenkins Pipeline Jobs/Projects!!!
+
+Jenkins pipeline script are written using Groovy ::::
+
+AWS / Az  / GCP						Managed DevOps services
+
+Jenkins / gitlab-ci / bamboo ....	Self-Managed DevOps Services 
+
+groovy scripts
+
+
+
+yaml scripts
+shell script
+python script 
+
+
+Jenkins Master											Jenkins Master
+
+Slave1 	:	Java  -- Install Maven/ant/gradle, git to perform build and create artifacts 
+Slave2  :   Python
+Slave3  :	NodeJs
+Slave4 	:	Angular
+Slave5 	:	.Net
+
+Jenkins will checkout the src from github repo, perform build & create artifacts(*.war), Deploy 
+
+
+Jenkins Pipelines :::
+
+2 types of Jenkins pipelines:
+
+	- Scripted pipelines 
+
+	- Declarative Pipelines****
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Create Artifacts') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                echo 'Clone Java Maven Src Repo!'
+                git 'https://github.com/LoksaiETA/Java-mvn-app2.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Create Artifacts') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+
+Summary::
+
+Explore, Manage Jenkins options.
+
+Create Jenkins freestyle project
+
+Create Jenkins Pipeline Project
