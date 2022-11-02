@@ -1418,3 +1418,116 @@ Pull Request
   696  git log --stat
   697  git show 03f62e30
   698  history
+
+
+@@@@@@@
+DAY-6
+@@@@@@@
+
+Contiuous Improvement!!!
+
+feedback 
+
+Major Drawback of DevOps Engr. ???
+
+People 
+Process - Strategies!!! 
+Tools 
+
+
+CI / C.Delivery / C. Deployment Using Jenkins!!!
+
+Jenkins = Build Orchestrator!!!
+
+Jenkins is a Master Slave Architecture!!!
+
+Jenkins Master  === VM
+			Used to Create and Schedule the Jobs
+			
+Jenkins Slave   === VM's
+			Is where the actual build happens.
+			
+Jobs / Projects === 
+
+Build
+Test
+Deployments 
+
+Developer::
+
+Java Application!!! == 	Visual Studio Code (IDE) and create the source code		
+						Commit the source code into to the remote git repository
+								
+Jenkins will checkout the src from git repo, perform build, create artifacts(*.war), Deploy to Target Environments(QA,UAT,PROD) 
+
+Jenkins Master  == install jenkins  Vm's Linux
+
+Slave1								Vm's Linux  - Install Maven, git to perform build and create artifacts 
+Slave2
+Slave3
+Slave4
+
+Slave1 	:	Java  -- Install Maven, git to perform build and create artifacts 
+Slave2  :   Python
+Slave3  :	NodeJs
+Slave4 	:	Angular
+Slave5 	:	.Net
+
+
+Non-Prod Environment(DEV/QA/UAT)						Prod Environment (Prod. jobs)
+Jenkins Master											Jenkins Master
+
+Slave1 	:	Java  -- Install Maven/ant/gradle, git to perform build and create artifacts 
+
+Slave2  :   Python
+Slave3  :	NodeJs
+Slave4 	:	Angular
+Slave5 	:	.Net
+
+
+
+
+DevOps Team ????
+Why to learn Jenkins???
+Your Role 
+
+
+Jenkins ===>  
+
+Developers' Perspective   == to create business logics, they jus use jenkins jobs 
+
+DevOps Perspective 
+We are responsible for end-to-end Jenkins implementations
+
+Installation
+Configurations of Jenkins Master & Slave Machines
+Creation of Jenkins Jobs
+Security
+Jenkins Plugins Managements
+User Managements  
+Upgrade Jenkins Server
+Backup and Recovery!!
+
+Ultimately used to achieve High Availability of Jenkins Servers 
+
+Release Management Perspective === they jus use jenkins jobs for release activities.
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Installation::
+
+AWS EC2 Instance : Linux 
+2 Machines (master/Slave)
+
+
+
+Install any SSH Client on your local machine::
+
+MobaXterm
+Putty 
+
+
+Jenkins by default runs on port 8080
+
+Install Jenkins!!!
