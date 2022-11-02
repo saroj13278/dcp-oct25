@@ -7,14 +7,12 @@ Update the Instance
 
 Execute only in Master:
 
-sudo -i
-
-yum update -y 
-
 #Install Jenkins :
 
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo -i
 
 #Install epel Package:
 
@@ -26,14 +24,14 @@ yum install jenkins
 
 #Start Jenkins:
 
-# Start jenkins service
-#service jenkins start
-#systemctl 
-
-
-# Setup Jenkins to start at boot,
-#chkconfig jenkins on
-
 systemctl status jenkins
 systemctl enable jenkins
 systemctl start jenkins
+systemctl status jenkins
+
+#Use Jenkins Master public IP and port 8080 to access jenkins server in browser:
+#E.g.:
+http://<jenkins_master_public-IP>:8080/
+
+#Install git to enable webhook:
+sudo yum install git -y
