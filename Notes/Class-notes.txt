@@ -1552,6 +1552,8 @@ Deployment Job ::
 
 	Copy the artifacts create during build stage into Target Environments(QA,UAT,PROD) 
 
+
+
 Create a jenkins job to deploy an application:::
 
 deploy_job1 ( with parameters)
@@ -1667,3 +1669,61 @@ Explore, Manage Jenkins options.
 Create Jenkins freestyle project
 
 Create Jenkins Pipeline Project
+
+
+@@@@@@@
+Day-8
+@@@@@@@
+
+
+
+Create build server
+config slave node in master
+create cicd pipeline to build n create artifacts
+
+
+
+Application Server :: tomcat -- runs on port 8080
+
+Create qa server
+configure publish over ssh
+create cicd pipeline to deploy artifacts to qa server
+
+tomcat 
+
+nginx 
+
+
+Next 
+
+Use Jenkins to copy t artifacts from slave to tomcat server 
+
+install publish over ssh plugins
+
+QA-Server
+
+
+
+
+
+
+sshPublisher(publishers: [sshPublisherDesc(configName: 'QA-Server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/mvn-hello-world.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
+
+
+summary::
+
+
+Create build server
+config slave node in master
+create cicd pipeline to build n create artifacts
+
+
+
+Application Server :: tomcat -- runs on port 8080
+
+Create qa server
+
+
+
+#configure publish over ssh
