@@ -1,0 +1,205 @@
+#**************************************************************************************************************************
+###Ansible - Demo.
+
+##Adhoc Commands:
+
+###test ssh connection from ansible host/controller to remote hosts
+
+ssh ansibleadmin@172.31.1.175
+ssh ansibleadmin@172.31.0.194
+
+###update vi etc/ansible/host
+#**************************************
+#hosts file is the default Inventory file for ansible 
+#**************************************
+
+[testnodes]
+samplenode1 ansible_ssh_host=172.31.1.175 ansible_ssh_user=ansibleadmin
+samplenode2 ansible_ssh_host=172.31.0.194 ansible_ssh_user=ansibleadmin
+
+#**************************************************************************************************************************
+#Access thru Ansible Controller :
+#**************************************************************************************************************************
+Ansible Modules: Eg.: 
+
+setup,copy,fetch,user,command,shell,ping,service,yum
+
+ansible testnodes -m ping
+
+ansible all -m ping ### will ping all hosts from /etc/ansible/hosts file
+
+ansible samplenode1 -m ping
+ansible samplenode2 -m ping
+
+#or using user defined Inventory file
+#ansible ansible-node1 -m ping -i myinventoryfile.txt
+
+#**************************************************************************************************************************
+
+ansible samplenode2 -m ping
+ANSIBLE_KEEP_REMOTE_FILES=1 ansible samplenode1 -m shell -a "sleep 5 ; echo 'hi'"
+
+ANSIBLE_KEEP_REMOTE_FILES=1 ansible samplenode1 -m shell -a "uptime"
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ansible Facts!
+
+ansible samplenode1 -m setup
+ansible samplenode2 -m setup -a "filter=ansible_mounts"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##Transfer a file from Ansible Controller to Nodes using copy Module
+
+ansible samplenode1 -m copy -a "src=/etc/ansible/samplefile1.txt dest=/home/ansibleadmin"
+
+ansible samplenode1 -m copy -a "src=/etc/ansible/samplefile1.txt dest=/home/ansibleadmin backup=yes"
+
+ansible samplenode1 -m copy -a "src=/home/devopsadmin/test1.txt dest=/home/ansibleadmin backup=yes"
+
+
+###idempotent
+
+ansible testnodes -m copy -a "content='hello from Ansible Controller\n' dest=/dest/path/hello.txt"
+
+ansible testnodes -m copy -a "content='hello from Ansible Controller\n' dest=/dest/path/hello.txt backup=yes"
+
+ansible testnodes -m copy -a "content='hello from Ansible Controller\n' dest=/dest/path/hello.txt backup=yes"
+
+##Transfer a file from Ansible Nodes to Ansible Controller using fetch Module
+
+ansible samplenode1 -m fetch -a "src=/home/ansibleadmin/node1file.txt dest=/home/devopsadmin"
+
+UseCase 1 :
+	- Deploy an artifact *.war from Jenkins Slave Machine to QA-Server.
+
+#Adhoc Commands with various Modules
+#How Ansible Works?
+#Ansible Facts & Variables
+
+#######Adhoc Commands with various Modules
+
+###Test Connection:
+ansible testnodes -m ping
+
+### Test Uptime of Nodes:
+ansible testnodes -m shell -a "uptime"
+
+### Pass Multiple Groups:
+ansible testnodes1:testnodes2 -m shell -a "uptime"
+
+### Check RAM Utilization:
+ansible testnodes -m shell -a "free -m"
+
+###Pass Different Inventory File:
+ansible -i inventory_file_name prodnodes -m shell -a "uptime"
+
+
+### List all modules:
+ansible-doc -l
+### No. of modules:
+ansible-doc -l | wc -l
+### Search for specific modules:
+ansible-doc -l | grep shel
+### To know about any specific modules:
+ansible-doc shell
+
+
+#**************************************************************************************************************************
+#Ansible Variables !
+#shell : echo $var1 
+
+#debugmod.yaml
+
+---
+ - hosts: samplenode1
+   tasks:
+   - debug:  
+      msg:
+       - "The os distribution is: {{ansible_distribution}}" 
+       - "THe os name is: {{ansible_system}}"
+       - "The os family is: {{ansible_os_family}}"
+       - "THe mount points are :{{ansible_mounts}}"
+       
+# How to jus verify playbook syntax:
+#ansible-playbook testfile.yaml --syntax-check
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~ test_var-datatype.yaml
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#test_var-datatype.yaml
+---
+ - hosts: samplenode1
+   vars:
+    x: 23
+    my_num: 45.67
+    my_name: Loksai
+    my_b: YES   
+   tasks:
+   - debug:
+      msg:
+       - "The value of x is: {{x}} and type: {{x|type_debug}}"
+       - "THe value of my_num: {{my_num}} and type : {{my_num|type_debug}}"
+       - "The value of my_name : {{my_name}} and type: {{my_name|type_debug}}"
+       - "THe value of my_b is: {{my_b}} and type : {{my_b|type_debug}}"
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#/etc/ansible/variables/varfile_datatype1.yaml
+    x: 23
+    my_num: 45.67
+    my_name: Loksai_ETA
+    my_b: YES
+
+#test_var-datatype1.yaml
+---
+ - hosts: samplenode1
+   vars_files:
+     - /etc/ansible/variables/varfile_datatype1.yaml
+   tasks:
+   - debug:
+      msg:
+       - "The value of x is: {{x}} and type: {{x|type_debug}}"
+       - "THe value of my_num: {{my_num}} and type : {{my_num|type_debug}}"
+       - "The value of my_name : {{my_name}} and type: {{my_name|type_debug}}"
+       - "THe value of my_b is: {{my_b}} and type : {{my_b|type_debug}}"
+
+ansible-playbook test_var-datatype1.yaml
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#ansible-playbook var_datatype1.yaml -e "x = 100 my_num = 50.50 my_name = Loksai_ETA my_b = NO"
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	   
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#test_varfile1.yaml
+---
+ - hosts: "{{ host_name }}"
+   become: yes
+   tasks:
+   - name: Install "{{ tool_name }}" service
+     yum:
+       name: "{{ tool_name }}"
+       state: "{{ tool_state }}"
+
+ansible-playbook testvarfile1.yaml -e "host_name=samplenode1 tool_name=git tool_state=present"
+
+##state ==> present | absent | latest 
+
+nginx service == start | stop | restart 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+##cat varfile1.yaml
+
+host_name = samplenode1
+tool_name = httpd
+tool_state = present
+
+---
+ - hosts: "{{ host_name }}"
+   become: yes
+   tasks:
+   - name: Install "{{ tool_name }}" service
+     yum:
+       name: "{{ tool_name }}"
+       state: "{{ tool_state }}"
+
+
+ansible-playbook testvarfile1.yaml -e "@/etc/ansible/variables/varfile1.yaml"
