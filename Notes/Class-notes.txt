@@ -1727,3 +1727,333 @@ Create qa server
 
 
 #configure publish over ssh
+
+
+@@@@@@@
+Day-ansible
+@@@@@@@
+
+
+
+Configuration Management using Ansible!!!
+
+
+Configuration Management :::
+
+DevOps ::::
+
+Tested thoroughly!!!
+
+Test envi. == appln.
+
+CICD pipeline, === build, test, deployment 
+
+static  ==>> VMs, config the test machines.
+
+Dynamic ==>> Dynamic environments, dynamically config the tools...
+ 
+Configuration Management Tools like Ansible!!!
+
+IAC == Infra structure as Code!!!
+
+Thru Scripts!!!  .YAML Scripts!!!
+
+Infra structure Provisioning			Terraform IAC 
+
+Configuration							Ansible IAC
+
+CI/C-Delivery
+
+SCM Code Checkout  ==> Build  ==> Create Artifacts ==> Deploy to QA Environment
+
+SCM Code Checkout  ==> Build  ==> Create Artifacts ==> Dynamically Create Test Environment ==> Dynamically Configure Test Environment ==> Deploy to QA Environment
+
+~~~~~
+
+Infra Team is responsible for Infra provisioning and tools config.
+
+Shell scripts to do these automation.				>>> IAC 
+
+yaml scripts!!!  ===>> key values!!!
+
+~~~~~
+
+SCript === jdk1.8
+
+Build ----> using jdk1.8 === *war
+QA    ----> using jdk1.8 === tomcat
+UAT
+Pre-Prod
+Prod
+
+
+
+
+
+
+
+Controller Machine ::
+	M1
+	M2
+	M3
+	M4
+	
+	
+Consider :::
+
+Non-Prod 										Prod
+
+Jenkins Master
+
+Jenkins Slaves
+s1
+s2
+s3
+s4
+s5
+s6
+
+9AM start  ==> Script to start all the slave machines 
+
+Ansible adhoc commands == restart 
+
+
+9pm stop
+
+
+Need to install and configure the tools!
+
+slave7 
+
+			yum update the package
+			install jdk1
+			install nginx
+			start nginx
+
+
+playbook 
+			yum update the package
+			install jdk1
+			install nginx
+			start nginx
+
+
+
+
+
+
+Install jenkins 
+
+
+install_jenkins.sh 
+
+	update the pkgs
+
+	installed jdk 
+
+	install jenkins repo 
+
+	install jenkins io keys
+
+	installed actual jenkins
+
+	started jenkins 
+
+ansible playbook === yaml 
+
+
+
+Linux Fundamentals !!!!
+
+	SSH Conn
+	
+	Password based auth
+	Passwordless auth
+	key based auth 
+	
+Linux Machine1				<<===>>			Linux Machine2
+	
+Jenkins Master								Jenkins Node(private key,user_name)
+Jenkins Master								Jenkins Node(password,user_name)
+jenkins Master								Jenkins Node(user_name)
+
+
+Ansible ::::
+
+
+[testnodes]
+x ansible_ssh_host=172.31.36.159 ansible_ssh_user=ansibleadmin 
+y ansible_ssh_host=172.31.35.164 ansible_ssh_user=ansibleadmin
+
+
+
+[jenkins_slaves]
+x.x.x.x
+a.a.a.a
+y.y.y.y
+z.z.z.z
+
+
+
+@@@@@@@@@@@@@@@@
+Ansible & Docker
+@@@@@@@@@@@@@@@
+
+
+install git on ur target machine!!!
+
+yum install git 
+
+Java  -- inventory file 
+
+DEV Envi === d1,d2,d3,d4
+
+QA q1,q,2,q4
+
+UAT
+
+PROD 
+
+.net -- inventory file 
+
+
+Yaml :: variables
+	scalar -- x: 5
+	list  x = {12,33,44,44}
+	maps  {x: 5, y=10}
+	dict
+
+
+Playbooks!!!!
+
+yaml scripts...!!!!
+
+
+
+Infra-structure!!!
+
+
+
+Ansible Tools == 
+
+AC === 100 Machines 
+
+key base auth.
+
+password less auth. 
+
+100 - Application Servers
+
+upgrade . security patch updates 
+
+jenkins master == slave 
+
+Playbooks shd be reusable, easily manageable!!!, generic one!
+
+Install a tool -- git!!!
+
+sudo yum install git 
+
+name : git
+
+state : present , absent , lastest
+
+
+Conditions!!!
+&
+Loops
+
+Handler 
+
+
+Ansible Playbooks ::::
+
+Workflow :::
+
+DEV team 	=== 
+DEV Team1 	===
+
+Ansible Roles !!!!
+
+	-	Templates for Ansible Components!!!
+	-	To Organize and Share / reuse the ansible components.
+
+How to Create Ansible Roles ???
+
+install Tomcat!
+
+Playbook to install tomcat !!!
+
+	t1
+	t2
+	t3
+	t4
+
+Ansible Roles
+
+Ansible Galaxy  == a repo ..
+
+
+*************
+Docker!!!!
+*************
+
+
+Docker ??
+Why Docker??
+How to use??
+
+Jenkins module == 
+
+artifacts == hello-world.war create in jenkins slave machine!
+deployed the same to QA-Server == publish over ssh plugins 
+
+
+Deployment!!!
+
+
+Developers's perspectives
+
+Infra-structure perspectives
+----
+Jenkins Master  ==> create jenkins jobs & schedules the jobs! in slave machines
+
+java 	- slave1,slave1.1,slave1.2
+.net 	- slave2
+python 	- slave3
+nodejs 	- slave4
+angular - slave5
+
+
+
+container -- Docker 
+
+	Container1 java --- (*.war, jdk1.8, tomcat8) 
+	Container2
+	Container3
+	Container4
+	Container5
+	Docker Engine1
+One Virtual Machine 
+
+
+****
+Developers's perspectives
+
+java application === build --> create artifacts --> 
+
+deploy DEV environment to perform initial testing --> *.war, jdk1.8, tomcat8
+
+same artifact is deployed to QA --> *.war, jdk1.7, tomcat10
+
+same artifact is deployed to UAT --> *.war, jdk1.7, tomcat10
+
+same artifact is deployed to PROD
+ 
+java application === build --> create artifacts --> *.war -- Package the artifact along with the dependencies
+
+Package1(*.war, jdk1.8, tomcat8) Container Images
+
+QA  - Package1
+
+UAT - Package1
